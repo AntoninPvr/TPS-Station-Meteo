@@ -2,6 +2,7 @@
 #include <SPI.h>
 #include "lcd.h"
 #include "interrupts.h"
+#include "buttons.h"
 
 volatile uint32_t cur_time = 0; //time in seconds
 

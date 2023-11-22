@@ -1,5 +1,6 @@
 #include "interrupts.h"
 #include "clock.h"
+#include "buttons.h"
 
 void setupInterrupts() {
     noInterrupts();
@@ -20,20 +21,6 @@ void button0() {
 
 void button1() {
     flag_button_pressed_1 = true;
-}
-
-void handlerButton0() {
-    if(flag_button_pressed_0) {
-        Serial.println("button 0 pressed");
-        flag_button_pressed_0 = false;
-    }
-}
-
-void handlerButton1() {
-    if(flag_button_pressed_1) {
-        Serial.println("button 1 pressed");
-        flag_button_pressed_1 = false;
-    }
 }
 
 ISR(TIMER2_OVF_vect) {
