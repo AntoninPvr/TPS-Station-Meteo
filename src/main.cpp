@@ -3,6 +3,8 @@
 #include "lcd.h"
 #include "interrupts.h"
 
+volatile uint32_t cur_time = 0; //time in seconds
+
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);

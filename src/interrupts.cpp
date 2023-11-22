@@ -1,11 +1,5 @@
 #include "interrupts.h"
-
-#define PIN_B0 2
-#define PIN_B1 3
-
-volatile bool flag_button_pressed_0 = false; //volatile to avoid compiler optimization
-volatile bool flag_button_pressed_1 = false;
-volatile uint8_t postscaler = 0;
+#include "clock.h"
 
 void setupInterrupts() {
     noInterrupts();
@@ -49,6 +43,19 @@ ISR(TIMER2_OVF_vect) {
     }
     else {
         postscaler = 0;
-        Serial.println("Message Timer");
+        s++;
+        if (s>=60) {
+            s = 0;
+            m++;
+            if (m>=60) {
+                m = 0;
+                h++;
+                if (h>=24) {
+                    h = 24;
+                }
+            }
+        }
+        flag_update_clock = true;
+        blink != blink;
     }
 }
