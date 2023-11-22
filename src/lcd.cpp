@@ -18,7 +18,7 @@ void sendLCDData(uint8_t data) {
 }
 
 void setupLCD() {
-    sendLCDCommand(0b00000001);
+    sendLCDCommand(0b00000001); //clear
     sendLCDCommand(0b00101010); //RE=1, N=0, BE=0, REV=0
     sendLCDCommand(0b00001001); //FW=0, BW=0, NW=1
     sendLCDCommand(0b00000110); //BDC=1, BDS=0
@@ -38,5 +38,36 @@ void writeString(char *p_char, uint8_t line, uint8_t column) {
     while(p_char[i] != NULL) {
         sendLCDData(p_char[i]);
         i++;
+    }
+}
+
+void writeString(char *p_char)   {
+    uint8_t i = 0;
+    while(p_char[i] != NULL) {
+        sendLCDData(p_char[i]);
+        i++;
+    }
+}
+
+void writeString(char *p_char, uint8_t line, enum Justification justify) {
+    uint8_t size = 0;
+    uint8_t offset = 0;
+    while(p_char[size] != NULL) {
+        size++;
+    }
+    switch (justify)
+    {
+    case Left:
+        offset = 0;
+        break;
+    case Right:
+        offset = COLUMN_NBR - size;
+        break;
+    case Center:
+        offset = COLUMN_NBR/2 - size/2;
+        break;    
+    default:
+        break;
+    writeString(p_char, line, offset);
     }
 }

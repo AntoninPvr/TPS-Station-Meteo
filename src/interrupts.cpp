@@ -3,14 +3,14 @@
 #define PIN_B0 2
 #define PIN_B1 3
 
-volatile bool flag_button_pressed_0 = false;
+volatile bool flag_button_pressed_0 = false; //volatile to avoid compiler optimization
 volatile bool flag_button_pressed_1 = false;
 volatile uint8_t postscaler = 0;
 
 void setupInterrupts() {
     noInterrupts();
-    TCCR2A &= 0b11111100;
-    TCCR2B |= 0b11110111;
+    TCCR2A &= 0b11111100; 
+    TCCR2B |= 0b11110111; //1024 prescaler
     TIMSK2 |= 0b00000001;
     
     pinMode(PIN_B0, INPUT_PULLUP);
