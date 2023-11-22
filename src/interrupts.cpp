@@ -1,4 +1,4 @@
-#include <interrupts.h>
+#include "interrupts.h"
 
 #define PIN_B0 2
 #define PIN_B1 3

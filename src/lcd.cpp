@@ -1,5 +1,5 @@
-#include <lcd.h>
-#include <bitUtils.h>
+#include "lcd.h"
+#include "bitUtils.h"
 
 void sendLCDCommand(uint8_t command) {
     uint8_t first = firstBit(command);

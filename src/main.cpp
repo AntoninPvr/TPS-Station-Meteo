@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <SPI.h>
-#include <lcd.h>
-#include <interrupts.h>
+#include "lcd.h"
+#include "interrupts.h"
 
 void setup() {
   // put your setup code here, to run once:
