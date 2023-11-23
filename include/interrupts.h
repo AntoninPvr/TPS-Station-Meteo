@@ -2,12 +2,12 @@
 #define INTERRUPTS_H
 
 #include <Arduino.h>
+#include "clock.h"
+#include "buttons.h"
+#include "global.h"
 
 #define PIN_B0 2
 #define PIN_B1 3
-
-volatile bool flag_update_clock = false;
-volatile uint8_t postscaler = 0;
 
 void setupInterrupts();
 void button0();

@@ -2,11 +2,8 @@
 #define BUTTONS_H
 
 #include <Arduino.h>
-
-uint8_t buttonState = 0;
-
-volatile bool flag_button_pressed_0 = false; //volatile to avoid compiler optimization
-volatile bool flag_button_pressed_1 = false;
+#include "global.h"
+#include "clock.h"
 
 void handlerButton0();
 void handlerButton1();

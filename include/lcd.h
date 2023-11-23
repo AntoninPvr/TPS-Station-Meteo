@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <SPI.h>
+#include "bitUtils.h"
 
 #define LINE_NBR 4
 #define COLUMN_NBR 20

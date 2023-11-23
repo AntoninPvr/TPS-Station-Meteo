@@ -1,6 +1,4 @@
 #include "interrupts.h"
-#include "clock.h"
-#include "buttons.h"
 
 void setupInterrupts() {
     noInterrupts();

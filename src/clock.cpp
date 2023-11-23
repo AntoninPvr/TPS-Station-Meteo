@@ -2,6 +2,7 @@
 #include "lcd.h"
 #include "interrupts.h"
 #include "buttons.h"
+#include "global.h"
 
 void displayClock() {
         char p_clock[9];
@@ -26,7 +27,7 @@ void displayClock2() {
     writeString(p_clock);
 }
 
-void intToChar(char *p_char, uint8_t offset,uint8_t val) {
+void intToChar(char *p_char, uint8_t offset, uint8_t val) {
     uint8_t units = val%10;
     p_char[offset + 1] = '0' + units;
     if(val > 10) {
