@@ -30,19 +30,8 @@ ISR(TIMER2_OVF_vect) {
     }
     else {
         postscaler = 0;
-        s++;
-        if (s>=60) {
-            s = 0;
-            m++;
-            if (m>=60) {
-                m = 0;
-                h++;
-                if (h>=24) {
-                    h = 24;
-                }
-            }
-        }
+        incrementClock();
         flag_update_clock = true;
-        blink != blink;
+        blink = !blink;
     }
 }

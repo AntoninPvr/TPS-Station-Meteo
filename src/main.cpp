@@ -3,8 +3,7 @@
 #include "lcd.h"
 #include "interrupts.h"
 #include "buttons.h"
-
-volatile uint32_t cur_time = 0; //time in seconds
+#include "clock.h"
 
 void setup() {
   // put your setup code here, to run once:
@@ -12,13 +11,14 @@ void setup() {
   SPI.begin();
   setupLCD();
   setupInterrupts();
+  writeString("May the forcE", 1, 4);
+  writeString("be with you...", 2, 6);
+  delay(1000);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  writeString("May the forcE", 1, 4);
-  writeString("be with you...", 2, 6);
   handlerButton0();
   handlerButton1();
-  delay(1000);
+  handlerDisplayClock();
 }
