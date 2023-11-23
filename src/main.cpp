@@ -10,12 +10,14 @@ volatile uint8_t h = 0;
 volatile uint8_t m = 0;
 volatile uint8_t s =0;
 volatile bool flag_update_clock = false;
+volatile uint16_t postscaler = 0;
+volatile uint8_t postscalerBlink = 0;
 
 bool blink = false;
 uint8_t buttonState = 0;
 volatile bool flag_button_pressed_0 = false;
 volatile bool flag_button_pressed_1 = false;
-volatile uint8_t postscaler = 0;
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -26,6 +28,7 @@ void setup() {
   writeString("May the forcE", 1, 4);
   writeString("be with you...", 2, 6);
   delay(1000);
+  clearLCD();
 }
 
 void loop() {
@@ -33,4 +36,5 @@ void loop() {
   handlerButton0();
   handlerButton1();
   handlerDisplayClock();
+  delay(100);
 }

@@ -71,3 +71,7 @@ void writeString(char *p_char, uint8_t line, enum Justification justify) {
     writeString(p_char, line, offset);
     }
 }
+
+void clearLCD() {
+    sendLCDCommand(0b00000001);
+}

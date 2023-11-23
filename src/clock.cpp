@@ -5,13 +5,17 @@
 #include "global.h"
 
 void displayClock() {
-        char p_clock[9];
-        intToChar(p_clock, 0, h);
-        p_clock[2] = ':';
-        intToChar(p_clock, 3, m);
-        p_clock[5] = ':';
-        intToChar(p_clock, 6, s);
-        writeString(p_clock, 2, Center);
+        char p_clock[] = "  :  :  ";
+        if((buttonState!=3) || (blink)) {
+            intToChar(p_clock, 0, h);
+        }
+        if((buttonState!=2) || (blink)) {
+            intToChar(p_clock, 3, m);
+        }
+        if((buttonState!=1) || (blink)) {
+            intToChar(p_clock, 6, s);
+        }
+        writeString(p_clock, 1, 7);
         flag_update_clock = false;
 }
 
@@ -30,8 +34,8 @@ void displayClock2() {
 void intToChar(char *p_char, uint8_t offset, uint8_t val) {
     uint8_t units = val%10;
     p_char[offset + 1] = '0' + units;
-    if(val > 10) {
-        p_char[offset + 0] = '0' + val/10 - units;
+    if(val >= 10) {
+        p_char[offset + 0] = '0' + val/10;
     }
     else {
         p_char[offset + 0] = '0';
@@ -81,30 +85,9 @@ void buttIncrementClock() {
     }
 }
 
-void selectedMask() {
-    if(blink) {
-        switch (buttonState)
-        {
-        case 1:
-            setLCDPostion(2, 7);
-            break;
-        case 2:
-            setLCDPostion(2, 10);
-            break;
-        case 3:
-            setLCDPostion(2, 13);
-            break;
-        writeString("  ");
-        }
-    }
-}
-
 void handlerDisplayClock() {
     if(flag_update_clock) {
         flag_update_clock = false;
         displayClock();
-        if(buttonState) {
-            selectedMask();
-        }
     }
 }

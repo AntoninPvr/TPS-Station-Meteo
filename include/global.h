@@ -7,7 +7,8 @@ extern volatile uint8_t h;
 extern volatile uint8_t m ;
 extern volatile uint8_t s ;
 extern volatile bool flag_update_clock;
-extern volatile uint8_t postscaler;
+extern volatile uint16_t postscaler;
+extern volatile uint8_t postscalerBlink;
 
 extern bool blink;
 extern uint8_t buttonState;

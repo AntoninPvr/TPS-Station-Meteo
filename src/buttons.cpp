@@ -14,10 +14,12 @@ void handlerButton0() {
 void handlerButton1() {
     if(flag_button_pressed_1) {
         Serial.println("button 1 pressed");
+        buttonState++;
+        if(buttonState > 3) {
+            buttonState = 0;
+        }
         flag_button_pressed_1 = false;
-    }
-    buttonState++;
-    if(buttonState > 3) {
-        buttonState = 0;
+        Serial.print("Bs: ");
+        Serial.println(buttonState);
     }
 }

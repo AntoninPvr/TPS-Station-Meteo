@@ -21,5 +21,6 @@ void setLCDPostion(uint8_t line, uint8_t column);
 void writeString(char *p_char, uint8_t line, uint8_t column);
 void writeString(char *p_char);
 void writeString(char *p_char, uint8_t line, enum Justification justify);
+void clearLCD();
 
 #endif //LCD_H

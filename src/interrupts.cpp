@@ -22,14 +22,21 @@ void button1() {
 }
 
 ISR(TIMER2_OVF_vect) {
-    TCNT2 = 131;
-    if (postscaler<125) {
+    TCNT2 = 220;
+    if (postscaler<500) {
         postscaler++;
     }
     else {
         postscaler = 0;
         incrementClock();
-        flag_update_clock = true;
+    }
+    if (postscalerBlink < 125) {
+        postscalerBlink++;
+    }
+    else {
+        postscalerBlink = 0;
         blink = !blink;
+        flag_update_clock = true;
     }
 }
+  
